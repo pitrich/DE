@@ -195,7 +195,7 @@ class App:
             sort_box.bind("<<ComboboxSelected>>", lambda event: self.load_products())
 
             filter_box = ttk.Combobox(control, textvariable=self.filter_text, state="readonly", width=18)
-            filter_box["values"] = ["Все диапазоны", "0-12,99%", "13-16,99%", "17% и более"]
+            filter_box["values"] = ["Все диапазоны", " 0-10,99%", "11-14,99%", "15% и более"]
             filter_box.pack(side="left", padx=5)
             filter_box.bind("<<ComboboxSelected>>", lambda event: self.load_products())
 
@@ -252,11 +252,11 @@ class App:
 
             filt = self.filter_text.get()
             if filt == "0-12,99%":
-                where_parts.append("products.discount >= 0 AND products.discount < 13")
+                where_parts.append("products.discount >= 0 AND products.discount < 11")
             if filt == "13-16,99%":
-                where_parts.append("products.discount >= 13 AND products.discount < 17")
+                where_parts.append("products.discount >= 11 AND products.discount < 15")
             if filt == "17% и более":
-                where_parts.append("products.discount >= 17")
+                where_parts.append("products.discount >= 15")
 
         if len(where_parts) > 0:
             sql += " WHERE " + " AND ".join(where_parts)
