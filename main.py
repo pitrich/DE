@@ -251,11 +251,11 @@ class App:
                 params.extend([like, like, like, like, like, like])
 
             filt = self.filter_text.get()
-            if filt == "0-12,99%":
+            if filt == "0-10,99%":
                 where_parts.append("products.discount >= 0 AND products.discount < 11")
-            if filt == "13-16,99%":
+            if filt == "11-14,99%":
                 where_parts.append("products.discount >= 11 AND products.discount < 15")
-            if filt == "17% и более":
+            if filt == "15% и более":
                 where_parts.append("products.discount >= 15")
 
         if len(where_parts) > 0:
